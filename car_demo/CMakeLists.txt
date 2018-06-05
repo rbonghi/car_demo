@@ -11,8 +11,7 @@ find_package(catkin REQUIRED COMPONENTS
   prius_msgs
 )
 
-find_package(gazebo 8 REQUIRED)
-find_package(ignition-msgs0 REQUIRED)
+find_package(gazebo 9 REQUIRED)
 
 catkin_package(
  # INCLUDE_DIRS include
@@ -24,10 +23,10 @@ catkin_package(
 include_directories(include ${catkin_INCLUDE_DIRS} ${GAZEBO_INCLUDE_DIRS} ${SDFormat_INCLUDE_DIRS})
 
 add_library(PriusHybridPlugin SHARED plugins/PriusHybridPlugin.cc)
-target_link_libraries(PriusHybridPlugin ${GAZEBO_LIBRARIES} ${IGNITION-MSGS_LIBRARIES})
+target_link_libraries(PriusHybridPlugin ${GAZEBO_LIBRARIES})
 
 add_library(gazebo_ros_block_laser SHARED plugins/gazebo_ros_block_laser.cpp)
-target_link_libraries(gazebo_ros_block_laser ${GAZEBO_LIBRARIES} ${IGNITION-MSGS_LIBRARIES})
+target_link_libraries(gazebo_ros_block_laser ${GAZEBO_LIBRARIES})
 
 catkin_install_python(PROGRAMS nodes/joystick_translator
                       DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
